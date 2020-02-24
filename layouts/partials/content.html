@@ -1,0 +1,17 @@
+{{ partial "style-navbar" .}}
+<div class="container content">
+  <div class="card">
+    <div class="card-header">
+      {{ partial "header" .}}
+    </div>
+    <div class="card-body post">
+      <article>
+        {{ .Content }}
+      </article>
+    </div>
+
+    <div class="card-footer text-muted">
+      <cite title="post-date">{{ partial "post-date" . }}</cite>
+    </div>
+  </div>
+</div>
