@@ -1,8 +1,29 @@
 <!DOCTYPE html>
 <html>
+{{ partial "head" .}}
+
 <body>
-  {{ range .Data.Pages }}
-    <h1><a href={{ .Permalink }}>{{ .Title }}</a></h1>
-  {{ end }}
+  {{ partial "style-navbar" .}}
+  <div class="container content">
+    <ul class="list-unstyled">
+      {{ range (where .Pages "Section" "blog") }}
+      <li>
+        <div class="card mb-3" style="background-color: #202430;">
+          <div class="card-body">
+            <a href="{{ .Permalink }}" style="color: darkgray;">
+            <h5 class="card-title"> >> {{ .Title }}</h5>
+            <p class="card-text">
+              <p>Description: {{ .Description }}</p>
+            </p>
+            </a>
+            <h6 class="text-muted">{{ .Date }}</h6>
+          </div>
+        </div>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ partial "footer" .}}
 </body>
+
 </html>
